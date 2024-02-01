@@ -1,136 +1,784 @@
-# 🔑 What must they do?
-
-A template for the creation of a ground truth repo with the following functions and features: 
-   - help for the creation of metadata for the Ground Truth Repo
-   - guidelines for filing and organizing the Ground Truth Repo
-   - automatic functions that control a github-action-workflow:
-      - evaluation and generation of metadata in the formats.
-         - METS (mets.xml)
-         - JSON (metadata.json)
-         - YML (metadata.yml)
-      - generation of a GithubPage (ph) for the internet users e.g. https://OCR-D.github.io/gt_structure_1_1/
-      - generation Releases
-      - referenced your Ground Truth Repo in [HTR-United GT Record catalog](https://htr-united.github.io/catalog.html)
-
-
-# 👷 👷‍♀️ How to use the template
-
-### Step 1
-
-
-* Create a repository for your ground truth data. Click on the [**Use this Template**](/../../generate) button.
-* Save your data to the repository. Your data should be stored in the **Data folder**. See the **[Organization of folders and files in the Repo](https://github.com/OCR-D/gt-repo-template/blob/main/README.md#--organization-of-folders-and-files-in-the-gt-repo)**.
-* The creation of a **README.md file is not necessary**.
-* The **README.md file** is at first created automatically and can be expanded manually in **a subsequent step**.
-* The **LICENSE.md** file should match the license of your data. Use [Choose an open source license](https://choosealicense.com/non-software/) to assign the suitable license.  
-
-### Step 2
-
-* **Create metadata** data for your ground truth dataset.
-* Metadata is necessary to ensure that your repository is **correctly documented**. Use the **[metadata form](https://tboenig.github.io/gt-metadata/document-your-gt.html)** to record the metadata correctly.
-
-
-### Step 3
-
-- The template contains tools that automatically create specific web pages from the stored metadata and ground truth data. You can publish these as GitHub pages. What do you do for this.
-   1. The analysis we started through a tag. see **[How to start the automatic functions?](https://github.com/OCR-D/gt-repo-template/blob/main/README.md#-how-to-start-the-automatic-functions)**   
-   2. Adjust the GitHub [page setting](/../../settings/pages). Select the [gh-pages branch](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site) to do this.
-
-
-### Step 4
-
-* **After** creating the repository, saving and pushing the data and automatically analyzing the data with the Github workflow, you can customize the README.md file.   
-* The README.md file is also created during the analysis. This contains the metadata, data about the corpus and a section extent part that you can customize.
-* Do you want to **customize the README.md** file?
-* In the **`<div id="extent">` section**, you can additions to the **README.md** file.
-* You can find the **old version of README.md** file in the `readme_old` folder. The **current version of README.md** file can be found in the main branch.
-
-<hr/>
-
-# <a name="myfootnote1">🗉</a>  METS File
-
-The **gt-repo-template** has the capability to generate METS files for GT data, involving an analysis of both the data structure and PAGE files. Despite the availability of this automated functionality, it is recommended to consider creating a custom METS file.
-
-This METS file can contain various elements, including bibliographic and provenance data. It is essential to ensure compliance with the [OCR-D METS specification](https://ocr-d.de/en/spec/mets#requirements-on-handling-metspage). 
-
-It's important to note that referencing PAGE files using URLs/URIs is not permitted. PAGE files should be stored in the repository and referenced within the METS file as follows:
-```xml
-<mets:FLocat xlink:href="GT-PAGE/[optional folder]/[PAGE-File.xml]" LOCTYPE="OTHER" OTHERLOCTYPE="FILE"/>
-```
-The image file should either be referenced via a URL/URI in the METS file or, if the image files are stored in the repository, specified as a file reference in the METS file.
-- URL/URI: 
-```xml
-<mets:FLocat xlink:href="https://opendata.uni-halle.de/retrieve/0775684d-82e9-4cb0-8e03-02f34c97949a/00000412.jpg" LOCTYPE="URL"/>
-```
-- File Reference:
-```xml
-<mets:FLocat xlink:href="GT-PAGE/[optional folder]/[image folder optional]/00000412.jpg" LOCTYPE="OTHER" OTHERLOCTYPE="FILE"/>
-```
-
-<hr/>
-
-
-# <a name="myfootnote1">🗀</a>  Organization of folders and files in the GT-Repo
-
- The structure of the repo is the following:
-
-```
-├── METADATA.yml
-├── LICENSE.md
-└── data
-      └── document_title or identifer
-          ├── GT-PAGE
-          └── mets.xml
-          
- ```        
-**Cached Image files:**
-- In a separate directory.
-- In the same directory as the text transcription (inside the GT-PAGE folder).
-
-If you use your own METS file, the images must be referenced in it.
-
-**Linked image files as URL/URI**:
-- May be referenced in the transcribus PAGE file as a URL/URI.
-Example:
-``<TranscribusMetadata docId="1256538" pageId="50892347" pageNr="1" tsid="105748322" status="GT" userId="48446" imgUrl="https://files.transkribus.eu/Get?id=SFNIJNJBHWZPNRYZCAIWBJIA&amp;fileType=view" xmlUrl="https://files.transkribus.eu/Get?id=TWZJHYTDEPJDGTXDWJQAXHXH" imageId="27308940"/>`
-
-If you use your own METS file, the images must be referenced in it.
-- Can be referenced in the METS file as URL/URI
-Example:
-``<mets:FLocat xlink:href="https://opendata.uni-halle.de/retrieve/0775684d-82e9-4cb0-8e03-02f34c97949a/00000412.jpg" LOCTYPE="URL"/>``
-
-
-## 🤖 How to start the automatic functions?
-
-The github-action-workflow is triggered by assigning a version tag (e.g. `v1.8.11`) at push.
-The version tag consists of **the lowercase letter `v`** (stands for version) and **a three-part numerical code**. 
-Number code: e.g. `1.8.11`
-The number code has the following meaning:
-- the first number indicates the version number (1).
-- the second number indicates the feature (8)
-- the third number indicates the fixes, paths... (11)
-
-
-# 📓 GT repo metadata
-You can find metadata about the GT Repo in the following files.
-   - mets.xml
-   - metadata.json
-   - metadata.yml
-   - CITATION.cff
-
-The content of the metadata files is the same, only the formats vary.
-You can find the file at:
-
-   - mets.xml 🠂 included in the zip file of the release
-   - metadata.json 🠂 e.g.  https://github.com/OCR-D/gt_structure_1_1/blob/gh-pages/metadata.json and alternativ included in the zip file of the release
-   - metadata.yml 🠂 e.g.  https://github.com/OCR-D/gt_structure_1_1/blob/main/METADATA.yml
-   - CITATION.cff 🠂 e.g.  https://github.com/OCR-D/gt_structure_1_1/blob/main/CITATION.cff
-
-            
-           
-
-
-
-
-
-  
+<div>
+   <h1 id="title">ulb-groundtruth-eval-odem-other</h1>
+   <p id="paragraph">OCR Grountruth ULB VD18 - OCR-D Phase III </p>
+   <h2>Metadata</h2>
+   <dl class="grid">
+      <dt id="Language">Language:</dt>
+      <dd>fra, lat, deu, ita, heb</dd>
+      <dt id="Format">Format:</dt>
+      <dd>Page-XML</dd>
+      <dt id="Time">Time:</dt>
+      <dd>1700-1799</dd>
+      <dt id="GTT">GT Type:</dt>
+      <dd>data_structure_and_text</dd>
+      <dt id="License">License:</dt>
+      <dd>CC-BY 4.0</dd>
+   </dl>
+   <h2>Sources</h2>
+   <h3>The volume of transcriptions:</h3>
+   <table id="table_id">
+      <thead>
+         <tr>
+            <th>TextLine</th>
+            <th>Page</th>
+            <th>TxtRegion</th>
+            <th>ImgRegion</th>
+            <th>GraphRegion</th>
+            <th>SepRegion</th>
+            <th>MathRegion</th>
+            <th>NoiseRegion</th>
+         </tr>
+      </thead>
+      <tbody>
+         <tr>
+            <td>11312</td>
+            <td>247</td>
+            <td>2028</td>
+            <td>3</td>
+            <td>65</td>
+            <td>17</td>
+            <td>13</td>
+            <td>16</td>
+         </tr>
+      </tbody>
+   </table>
+   <div id="transcriptions">
+      <h3>List of transcriptions</h3>
+      <div>
+         <table id="table_id" class="display">
+            <thead>
+               <tr>
+                  <th>document</th>
+                  <th>TxtRegion</th>
+                  <th>ImgRegion</th>
+                  <th>LineDrawRegion</th>
+                  <th>GraphRegion</th>
+                  <th>TabRegion</th>
+                  <th>ChartRegion</th>
+                  <th>SepRegion</th>
+                  <th>MathRegion</th>
+                  <th>ChemRegion</th>
+                  <th>MusicRegion</th>
+                  <th>AdRegion</th>
+                  <th>NoiseRegion</th>
+                  <th>UnkownRegion</th>
+                  <th>CustomRegion</th>
+                  <th>TextLine</th>
+                  <th>Page</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td>lat+ger+fre</td>
+                  <td>117</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>318</td>
+                  <td>2</td>
+               </tr>
+               <tr>
+                  <td>hun</td>
+                  <td>8</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>35</td>
+                  <td>1</td>
+               </tr>
+               <tr>
+                  <td>ita+ger</td>
+                  <td>77</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>184</td>
+                  <td>4</td>
+               </tr>
+               <tr>
+                  <td>lat+grc</td>
+                  <td>111</td>
+                  <td/>
+                  <td/>
+                  <td>1</td>
+                  <td/>
+                  <td/>
+                  <td>1</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>684</td>
+                  <td>12</td>
+               </tr>
+               <tr>
+                  <td>ger+grc</td>
+                  <td>6</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>33</td>
+                  <td>1</td>
+               </tr>
+               <tr>
+                  <td>lat+fre</td>
+                  <td>23</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>11</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>28</td>
+                  <td>1</td>
+               </tr>
+               <tr>
+                  <td>ger+fre</td>
+                  <td>49</td>
+                  <td/>
+                  <td/>
+                  <td>1</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>280</td>
+                  <td>8</td>
+               </tr>
+               <tr>
+                  <td>lat+spa</td>
+                  <td>1</td>
+                  <td/>
+                  <td/>
+                  <td>1</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>21</td>
+                  <td>1</td>
+               </tr>
+               <tr>
+                  <td>yid+heb+lat</td>
+                  <td>7</td>
+                  <td>1</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>24</td>
+                  <td>1</td>
+               </tr>
+               <tr>
+                  <td>fre+ger+lat</td>
+                  <td>39</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>112</td>
+                  <td>1</td>
+               </tr>
+               <tr>
+                  <td>fre+ger</td>
+                  <td>60</td>
+                  <td/>
+                  <td/>
+                  <td>1</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>3</td>
+                  <td/>
+                  <td/>
+                  <td>271</td>
+                  <td>6</td>
+               </tr>
+               <tr>
+                  <td>lat+heb</td>
+                  <td>8</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>1</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>69</td>
+                  <td>2</td>
+               </tr>
+               <tr>
+                  <td>lat+heb+grc</td>
+                  <td>30</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>299</td>
+                  <td>2</td>
+               </tr>
+               <tr>
+                  <td>lav+ger</td>
+                  <td>12</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>65</td>
+                  <td>2</td>
+               </tr>
+               <tr>
+                  <td>lat+gre</td>
+                  <td>12</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>37</td>
+                  <td>1</td>
+               </tr>
+               <tr>
+                  <td>ita</td>
+                  <td>26</td>
+                  <td/>
+                  <td/>
+                  <td>1</td>
+                  <td/>
+                  <td/>
+                  <td>1</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>1</td>
+                  <td/>
+                  <td/>
+                  <td>230</td>
+                  <td>6</td>
+               </tr>
+               <tr>
+                  <td>fre</td>
+                  <td>489</td>
+                  <td/>
+                  <td/>
+                  <td>13</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>2</td>
+                  <td/>
+                  <td/>
+                  <td>2388</td>
+                  <td>72</td>
+               </tr>
+               <tr>
+                  <td>eng+ger</td>
+                  <td>6</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>34</td>
+                  <td>1</td>
+               </tr>
+               <tr>
+                  <td>lat+grc+heb</td>
+                  <td>1</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>28</td>
+                  <td>1</td>
+               </tr>
+               <tr>
+                  <td>ger+heb+grc</td>
+                  <td>10</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>86</td>
+                  <td>1</td>
+               </tr>
+               <tr>
+                  <td>ger+lat+fre</td>
+                  <td>2</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>28</td>
+                  <td>1</td>
+               </tr>
+               <tr>
+                  <td>ger+ita</td>
+                  <td>9</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>62</td>
+                  <td>2</td>
+               </tr>
+               <tr>
+                  <td>lat+ger</td>
+                  <td>388</td>
+                  <td/>
+                  <td/>
+                  <td>11</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>2</td>
+                  <td/>
+                  <td/>
+                  <td>2202</td>
+                  <td>51</td>
+               </tr>
+               <tr>
+                  <td>lat+ger+grc</td>
+                  <td>5</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>27</td>
+                  <td>1</td>
+               </tr>
+               <tr>
+                  <td>ine+ger</td>
+                  <td>9</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>89</td>
+                  <td>1</td>
+               </tr>
+               <tr>
+                  <td>lat+ara+per</td>
+                  <td>4</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>54</td>
+                  <td>2</td>
+               </tr>
+               <tr>
+                  <td>ger+lat</td>
+                  <td>356</td>
+                  <td/>
+                  <td/>
+                  <td>31</td>
+                  <td/>
+                  <td/>
+                  <td>2</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>8</td>
+                  <td/>
+                  <td/>
+                  <td>2399</td>
+                  <td>42</td>
+               </tr>
+               <tr>
+                  <td>fre+lat</td>
+                  <td>6</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>43</td>
+                  <td>1</td>
+               </tr>
+               <tr>
+                  <td>eng</td>
+                  <td>5</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>25</td>
+                  <td>1</td>
+               </tr>
+               <tr>
+                  <td>fre+ita</td>
+                  <td>1</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>44</td>
+                  <td>1</td>
+               </tr>
+               <tr>
+                  <td>ger+eng</td>
+                  <td>70</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>387</td>
+                  <td>3</td>
+               </tr>
+               <tr>
+                  <td>ger+fre+lat</td>
+                  <td>20</td>
+                  <td/>
+                  <td/>
+                  <td>1</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>2</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>250</td>
+                  <td>4</td>
+               </tr>
+               <tr>
+                  <td>grc</td>
+                  <td>20</td>
+                  <td>1</td>
+                  <td/>
+                  <td>1</td>
+                  <td/>
+                  <td/>
+                  <td>7</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>111</td>
+                  <td>3</td>
+               </tr>
+               <tr>
+                  <td>grc+lat</td>
+                  <td>29</td>
+                  <td/>
+                  <td/>
+                  <td>1</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>275</td>
+                  <td>5</td>
+               </tr>
+               <tr>
+                  <td>grc+ger</td>
+                  <td>3</td>
+                  <td>1</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>5</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>30</td>
+                  <td>1</td>
+               </tr>
+               <tr>
+                  <td>ger+eng+fre</td>
+                  <td>7</td>
+                  <td/>
+                  <td/>
+                  <td>2</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>22</td>
+                  <td>1</td>
+               </tr>
+               <tr>
+                  <td>heb+lat</td>
+                  <td>2</td>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td>38</td>
+                  <td>1</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+   </div>
+   <div id="extent">
+      <h2>Extent</h2>
+      <p>
+                                In this section they can insert additional information, instructions or notes.
+                            </p>
+   </div>
+</div>
