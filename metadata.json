@@ -1,0 +1,88 @@
+{
+  "schema": "https://tboenig.github.io/gt-metadata/schema/2023-10-25/schema.json",
+  "title": "ulb-groundtruth-eval-odem-other",
+  "url": "https://github.com/ulb-sachsen-anhalt/ulb-groundtruth-eval-odem-other",
+  "authors": [
+    {
+      "name": "Uwe",
+      "surname": "Hartwig",
+      "orcid": "0000-0001-7164-6376",
+      "roles": [
+        "project-manager"
+      ]
+    }
+  ],
+  "description": "OCR Grountruth ULB VD18 - OCR-D Phase III ",
+  "language": [
+    "fra",
+    "lat",
+    "deu",
+    "ita",
+    "heb"
+  ],
+  "production-software": "OCR-D",
+  "script": [
+    "Antiqua",
+    "Latn",
+    "Goth",
+    "Grek",
+    "Hebr",
+    "Arab"
+  ],
+  "script-type": "print",
+  "time": {
+    "notBefore": "1700",
+    "notAfter": "1799"
+  },
+  "hands": {
+    "count": "3",
+    "level": "levelmix"
+  },
+  "license": [
+    {
+      "name": "CC-BY 4.0",
+      "url": "https://creativecommons.org/licenses/by/4.0/"
+    }
+  ],
+  "gtType": "data_structure_and_text",
+  "format": "Page-XML",
+  "volume": [
+    {
+      "metric": "pages",
+      "count": 280
+    }
+  ],
+  "gtvolume": {
+    "TxtRegion": "2028",
+    "ImgRegion": "3",
+    "GraphRegion": "65",
+    "SepRegion": "17",
+    "MathRegion": "13",
+    "NoiseRegion": "16",
+    "TextLine": "11312",
+    "Page": "247"
+  },
+  "labelling": [
+    "content-type/corpus",
+    "platform/platform-independent",
+    "content-encoding/structured",
+    "activityDomain/computing/visual/analysisRecognition/text",
+    "activityDomain/computing/visual/analysisRecognition/ocr",
+    "activityDomain/computing/visual/analysisRecognition/layoutAnalysis",
+    "contentOfInterest/visual/text",
+    "contentOfInterest/visual/graphical",
+    "contentOfInterest/visual/graphical/separator",
+    "contentOfInterest/visual/image",
+    "contentOfInterest/visual/composite/maths",
+    "granularity/physical/document-related/page",
+    "granularity/physical/document-related/text-line",
+    "granularity/physical/document-related/word",
+    "granularity/logical/document-related/paragraph",
+    "data-attributes/document-related/structural/footnotes",
+    "data-attributes/document-related/structural/footnote-continued",
+    "data-attributes/document-related/structural/running-titles",
+    "data-attributes/document-related/visual/text/drop-caps",
+    "data-attributes/document-related/visual/text/font/typeface/blackletter",
+    "data-attributes/document-related/visual/text/font/typeface/antiqua"
+  ]
+}
