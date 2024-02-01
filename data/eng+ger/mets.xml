@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<mets:mets xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:mets="http://www.loc.gov/METS/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mods="http://www.loc.gov/mods/v3" xmlns:dv="http://dfg-viewer.de/" xmlns:vlz="http://visuallibrary.net/vlz/1.0/" xmlns:zvdd="http://zvdd.gdz-cms.de/" xsi:schemaLocation="http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/version112/mets.xsd" OBJID="2" LABEL="Inhouse-Digitalisierung">
+    <mets:dmdSec xmlns:b="https://bibliothek.uni-halle.de" ID="md5233293">
+        <mets:mdWrap MIMETYPE="text/xml" MDTYPE="MODS">
+            <mets:xmlData>
+                <mods:mods version="3.7" xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-7.xsd">
+                    <mods:titleInfo>
+                        <mods:nonSort>A</mods:nonSort>
+                        <mods:title>New Collection of poetical pieces</mods:title>
+                        <mods:subTitle>original and translated Oder</mods:subTitle>
+                    </mods:titleInfo>
+                    <mods:identifier type="vd18">11216433</mods:identifier>
+                    <mods:identifier type="gbv">193989131</mods:identifier>
+                    <mods:identifier type="urn">urn:nbn:de:gbv:3:1-340719</mods:identifier>
+                    <mods:identifier type="doi">doi:10.25673/54443</mods:identifier>
+                    <mods:language>
+                        <mods:languageTerm authority="iso639-2b" type="code">eng</mods:languageTerm>
+                    </mods:language>
+                    <mods:language>
+                        <mods:languageTerm authority="iso639-2b" type="code">ger</mods:languageTerm>
+                    </mods:language>
+                    <mods:genre authority="aad">Schulbuch</mods:genre>
+                    <mods:originInfo eventType="publication">
+                        <mods:place>
+                            <mods:placeTerm type="text">Erfurt</mods:placeTerm>
+                        </mods:place>
+                        <mods:publisher>Keyser</mods:publisher>
+                        <mods:dateIssued encoding="iso8601" keyDate="yes">1778</mods:dateIssued>
+                        <mods:issuance>monographic</mods:issuance>
+                    </mods:originInfo>
+                </mods:mods>
+            </mets:xmlData>
+        </mets:mdWrap>
+    </mets:dmdSec>
+    <mets:fileSec>
+        <mets:fileGrp USE="OCR-D-IMG">
+            <mets:file MIMETYPE="image/jpeg" ID="IMG_MAX_5389644">
+                <mets:FLocat xlink:href="https://opendata.uni-halle.de/retrieve/97d6e2ab-06ed-4879-9758-41fd49e01c57/00000156.jpg" LOCTYPE="URL"/>
+            </mets:file>
+        </mets:fileGrp>
+        <mets:fileGrp USE="OCR-D-GT-FULLTEXT">
+            <mets:file ID="OCR-D-GT-FULLTEXT-1" MIMETYPE="application/vnd.prima.page+xml">
+                <mets:FLocat xlink:href="GT-PAGE/urn+nbn+de+gbv+3+1-340719-p0156-6_eng+ger.gt.xml" LOCTYPE="OTHER" OTHERLOCTYPE="FILE"/>
+            </mets:file>
+        </mets:fileGrp>
+    </mets:fileSec>
+    <mets:structMap TYPE="PHYSICAL">
+        <mets:div TYPE="physSequence" ID="physroot">
+            <mets:div ID="phys5389644" TYPE="page" CONTENTIDS="urn:nbn:de:gbv:3:1-340719-p0156-6" ORDER="1">
+                <mets:fptr FILEID="IMG_MAX_5389644"/>
+                <mets:fptr FILEID="OCR-D-GT-FULLTEXT-1"/>
+            </mets:div>
+        </mets:div>
+    </mets:structMap>
+    <mets:structMap TYPE="LOGICAL">
+        <mets:div ID="logroot" LABEL="ODEM Corpus 2021-2023" TYPE="document">
+            <mets:div ID="log5389639" TYPE="section" ORDER="1" DMDID="md5233293"/>
+        </mets:div>
+    </mets:structMap>
+    <mets:structLink>
+        <mets:smLink xlink:from="log5389639" xlink:to="phys5389644"/>
+    </mets:structLink>
+</mets:mets>

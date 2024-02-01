@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<PcGts xmlns="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" pcGtsId="PAGE_01" xsi:schemaLocation="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15 http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15/pagecontent.xsd">
+  <Metadata>
+    <Creator>OCR-D DFG Phase III</Creator>
+    <Created>2024-01-19T13:10:16Z</Created>
+    <LastChange>2024-01-19T13:10:16Z</LastChange>
+    <Comments>ODEM: OCR-D extension for mass digitization (2021-2024)</Comments>
+  </Metadata>
+  <Page imageFilename="MAX/urn+nbn+de+gbv+3+1-791562-p0135-7_grc.png" imageWidth="1585" imageHeight="2355" type="content" primaryLanguage="Greek">
+    <Border>
+      <Coords points="141,115 139,2269 1541,2276 1506,115"/>
+    </Border>
+    <ReadingOrder>
+      <OrderedGroup id="ro_1658914485186" caption="Regions reading order">
+        <RegionRefIndexed index="0" regionRef="region0000"/>
+      </OrderedGroup>
+    </ReadingOrder>
+    <GraphicRegion id="Graphic_1658914475736_5990" custom="readingOrder {index:3;}">
+      <Coords points="147,797 1382,797 1382,1437 147,1437"/>
+    </GraphicRegion>
+  </Page>
+</PcGts>
