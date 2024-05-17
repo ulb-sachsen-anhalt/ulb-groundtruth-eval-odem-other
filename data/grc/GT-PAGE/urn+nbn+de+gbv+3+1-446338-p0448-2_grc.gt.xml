@@ -14,7 +14,6 @@
       <OrderedGroup id="reading-order">
         <RegionRefIndexed index="0" regionRef="region0000"/>
         <RegionRefIndexed index="1" regionRef="region0001"/>
-        <RegionRefIndexed index="2" regionRef="region0002"/>
         <RegionRefIndexed index="3" regionRef="region0003"/>
         <RegionRefIndexed index="4" regionRef="region0004"/>
         <RegionRefIndexed index="5" regionRef="region0005"/>
@@ -676,10 +675,6 @@
         <TextEquiv conf="0.365200939178467">
           <Unicode>᾿ ΄</Unicode>
         </TextEquiv>
-      </TextLine>
-      <TextLine id="region0006_line0002">
-        <Coords points="867,555 825,556 823,571 829,575 839,576 873,577 892,573 892,560 889,556"/>
-        <Baseline points="823,569 892,571"/>
       </TextLine>
       <TextLine id="region0006_line0003">
         <Coords points="533,564 506,566 506,601 539,602 546,600 550,594 563,598 625,600 632,592 663,594 668,589 676,590 683,596 701,599 757,606 784,607 793,606 798,602 827,601 885,602 889,600 897,600 904,605 910,600 920,605 961,606 970,602 970,585 967,581 930,579 925,575 892,574 872,578 839,577 829,576 823,572 795,571 772,580 739,578 725,574 620,571 581,574 565,569 560,564"/>
