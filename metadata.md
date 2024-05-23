@@ -186,7 +186,7 @@ An image database</p>
                         Metadata for the complete collection and the components are in METS format.</p>
    <ul>
       <li>
-         <a href="https://github.com/ulb-sachsen-anhalt/ulb-groundtruth-eval-odem-other/releases/tag/v1.1.1">The BagIt 'ocrd.zip' files for the current version, please download them from the latest release.: Release 2_v1.1.1</a>
+         <a href="https://github.com/ulb-sachsen-anhalt/ulb-groundtruth-eval-odem-other/releases/tag/v1.2.1">The BagIt 'ocrd.zip' files for the current version, please download them from the latest release.: Release 4_v1.2.1</a>
       </li>
       <li>
          <a href="https://github.com/ulb-sachsen-anhalt/ulb-groundtruth-eval-odem-other/releases">Version archive</a>
@@ -283,7 +283,7 @@ An image database</p>
       </thead>
       <tbody>
          <tr>
-            <td>11312</td>
+            <td>11311</td>
             <td>247</td>
             <td>2028</td>
             <td>3</td>
